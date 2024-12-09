@@ -265,4 +265,256 @@
         
         @enduml
 
+## 6) yaml openApi
 
+                openapi: 3.0.0
+                info:
+                  title: Car Wash Management API
+                  version: 1.0.0
+                  description: API for managing car washes, customers, cars, services, and bookings.
+                
+                paths:
+                  /customers:
+                    get:
+                      summary: Get all customers.
+                      responses:
+                        '200':
+                          description: A list of customers.
+                          content:
+                            application/json:
+                              schema:
+                                type: array
+                                items:
+                                  $ref: '#/components/schemas/Customer'
+                    post:
+                      summary: Create a new customer.
+                      requestBody:
+                        required: true
+                        content:
+                          application/json:
+                            schema:
+                              $ref: '#/components/schemas/Customer'
+                      responses:
+                        '201':
+                          description: Customer created successfully.
+                          content:
+                            application/json:
+                              schema:
+                                $ref: '#/components/schemas/Customer'
+                        '400':
+                          description: Invalid customer data.
+                
+                
+                  /customers/{customerId}:
+                    get:
+                      summary: Get a specific customer.
+                      parameters:
+                        - in: path
+                          name: customerId
+                          schema:
+                            type: integer
+                          required: true
+                      responses:
+                        '200':
+                          description: A customer.
+                          content:
+                            application/json:
+                              schema:
+                                $ref: '#/components/schemas/Customer'
+                        '404':
+                          description: Customer not found.
+                    put:
+                      summary: Update a customer.
+                      parameters:
+                        - in: path
+                          name: customerId
+                          schema:
+                            type: integer
+                          required: true
+                      requestBody:
+                        required: true
+                        content:
+                          application/json:
+                            schema:
+                              $ref: '#/components/schemas/Customer'
+                      responses:
+                        '200':
+                          description: Customer updated successfully.
+                          content:
+                            application/json:
+                              schema:
+                                $ref: '#/components/schemas/Customer'
+                        '400':
+                          description: Invalid customer data.
+                        '404':
+                          description: Customer not found.
+                    delete:
+                      summary: Delete a customer.
+                      parameters:
+                        - in: path
+                          name: customerId
+                          schema:
+                            type: integer
+                          required: true
+                      responses:
+                        '204':
+                          description: Customer deleted successfully.
+                        '404':
+                          description: Customer not found.
+                
+                
+                  # ... (Similar CRUD operations for Cars, Services, Employees, Washes) ...
+                
+                  /carwashes: #Example booking endpoint (expand for more detail and error handling)
+                    post:
+                      summary: Create a new car wash booking.
+                      requestBody:
+                        required: true
+                        content:
+                          application/json:
+                            schema:
+                              $ref: '#/components/schemas/BookingRequest'
+                      responses:
+                        '201':
+                          description: Booking created successfully.
+                          content:
+                            application/json:
+                              schema:
+                                $ref: '#/components/schemas/CarWashBooking'
+                        '400':
+                          description: Invalid booking request or conflict.
+                        '404':
+                          description: Customer, car, or service not found.
+                
+                components:
+                  schemas:
+                    Customer:
+                      type: object
+                      properties:
+                        customerId:
+                          type: integer
+                          readOnly: true #This is auto-generated on creation
+                        name:
+                          type: string
+                        phone:
+                          type: string
+                          format: phone
+                        email:
+                          type: string
+                          format: email
+                        address:
+                          type: string
+                        cars: #Array of car IDs
+                          type: array
+                          items:
+                            type: integer
+                            $ref: '#/components/schemas/Car'
+                
+                    Car:
+                      type: object
+                      properties:
+                        carId:
+                          type: integer
+                          readOnly: true
+                        make:
+                          type: string
+                        model:
+                          type: string
+                        year:
+                          type: integer
+                        licensePlate:
+                          type: string
+                        carType:
+                          type: string
+                          enum: [sedan, suv, truck, etc.] #Specify your car types
+                        customerId:
+                          type: integer
+                
+                    Service:
+                      type: object
+                      properties:
+                        serviceId:
+                          type: integer
+                          readOnly: true
+                        serviceName:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                          format: float
+                
+                    Employee:
+                      type: object
+                      properties:
+                        employeeId:
+                          type: integer
+                          readOnly: true
+                        name:
+                          type: string
+                        position:
+                          type: string
+                        phone:
+                          type: string
+                          format: phone
+                        email:
+                          type: string
+                          format: email
+                
+                
+                    Wash:
+                      type: object
+                      properties:
+                        washId:
+                          type: integer
+                          readOnly: true
+                        washType:
+                          type: string
+                          enum: [automatic, manual, express]
+                        washStatus:
+                          type: string
+                          enum: [in_progress, completed, cancelled]
+                        startTime:
+                          type: string
+                          format: date-time
+                        endTime:
+                          type: string
+                          format: date-time
+                        employeeId:
+                          type: integer
+                        serviceId:
+                          type: integer
+                        bookingId: #Link to Booking
+                          type: integer
+                
+                
+                    CarWashBooking: #Renamed for clarity
+                      type: object
+                      properties:
+                        bookingId:
+                          type: integer
+                          readOnly: true
+                        date:
+                          type: string
+                          format: date
+                        status:
+                          type: string
+                          enum: [confirmed, completed, cancelled]
+                        customerId:
+                          type: integer
+                        carId:
+                          type: integer
+                
+                
+                    BookingRequest: # Request body for creating a booking
+                      type: object
+                      properties:
+                        customerId:
+                          type: integer
+                        carId:
+                          type: integer
+                        serviceId:
+                          type: integer
+                        date:
+                          type: string
+          format: date
