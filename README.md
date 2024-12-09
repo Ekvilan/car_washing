@@ -192,4 +192,6 @@
 ## ER-диаграмма
 ![image](https://github.com/user-attachments/assets/20fa00b7-1acd-4737-970c-6ad85e3746bf)
 
+# 3) C4 model
 
+        {"type":"excalidraw/clipboard","elements":[{"id":"RrUCHYvTsdJR_Tl94UWqF","type":"rectangle","x":-366.5321503163484,"y":2033.8948015755,"width":1708.9232104242917,"height":603.2316983561586,"angle":0,"strokeColor":"#868e96","backgroundColor":"transparent","fillStyle":"solid","strokeWidth":2,"strokeStyle":"dashed","roughness":1,"opacity":100,"groupIds":[],"frameId":null,"index":"b8E","roundness":null,"seed":1215667209,"version":92,"versionNonce":1269335561,"isDeleted":false,"boundElements":[],"updated":1733271165574,"link":null,"locked":false}],"files":{}}
