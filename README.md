@@ -8,16 +8,83 @@
         3) RPS 75k/24/3600 ~= 1
         
 # 1) user story
-        1) Я как клиент, хочу иметь возможность легко забронировать мойку онлайн, чтобы я мог выбрать удобное для меня время. (Фокус: онлайн-бронирование)
-        2) Я как клиент, хочу видеть список доступных услуг и их стоимость на сайте и в приложении, чтобы я мог выбрать наиболее подходящий вариант.                   (Фокус: прозрачность цен и услуг)
-        3) Я как клиент, хочу получать уведомления о приближении времени моего бронирования, чтобы не опоздать. (Фокус: напоминания)
-        4)Я как клиент, хочу иметь возможность выбрать дополнительные услуги, такие как химчистка салона или полировка кузова, во время бронирования. (Фокус: дополнительные услуги)
-        5)Я как клиент, хочу чтобы мой автомобиль был вымыт качественно и эффективно, чтобы он выглядел чистым и блестящим. (Фокус: качество мойки)
-        6)Я как клиент, хочу удобную и безопасную зону ожидания, пока мой автомобиль моют. (Фокус: комфорт ожидания)
-        7)Я как клиент, хочу иметь возможность оплачивать услуги различными способами, включая наличные, карты и электронные платежи. (Фокус: варианты оплаты)
-        8)Я как клиент, хочу получить скидку или бонусную программу за частое посещение автомойки. (Фокус: лояльность)
-        9)Я как клиент, хочу иметь возможность оставить отзыв о качестве услуг автомойки. (Фокус: обратная связь)
-        10)Я как клиент, хочу легко найти автомойку на карте и получить указания по маршруту. (Фокус: доступность и навигация)
+       <!DOCTYPE html>
+<html>
+<head>
+<title>User Stories by Focus</title>
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+<h2>User Stories Grouped by Focus</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Focus Area</th>
+      <th>User Story</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Online Booking</td>
+      <td>I want to be able to easily book a car wash online, so that I can choose a time that is convenient for me.</td>
+    </tr>
+        <tr>
+      <td>Transparency of Prices and Services</td>
+      <td>I want to see a list of available services and their prices on the website and in the app, so that I can choose the most suitable option.</td>
+    </tr>
+      <tr>
+      <td>Reminders</td>
+      <td>I want to receive notifications about the upcoming time of my booking, so that I am not late.</td>
+    </tr>
+     <tr>
+      <td>Additional Services</td>
+      <td>I want to be able to choose additional services, such as interior cleaning or body polishing, during the booking process.</td>
+    </tr>
+      <tr>
+      <td>Quality of Wash</td>
+       <td>I want my car to be washed thoroughly and effectively, so that it looks clean and shiny.</td>
+    </tr>
+     <tr>
+      <td>Comfort of Waiting</td>
+      <td>I want a comfortable and safe waiting area while my car is being washed.</td>
+    </tr>
+    <tr>
+      <td>Payment Options</td>
+      <td>I want to be able to pay for services in various ways, including cash, cards, and electronic payments.</td>
+    </tr>
+       <tr>
+      <td>Loyalty Program</td>
+       <td>I want to receive a discount or bonus program for frequent visits to the car wash.</td>
+    </tr>
+    <tr>
+      <td>Feedback</td>
+      <td>I want to be able to leave a review about the quality of the car wash services.</td>
+    </tr>
+       <tr>
+      <td>Accessibility and Navigation</td>
+       <td>I want to easily find the car wash on the map and get directions.</td>
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>
 
 
  # 2) usecase
