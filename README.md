@@ -22,20 +22,18 @@
 
  # 2) usecase
     
- ![image](https://github.com/user-attachments/assets/0c028bb4-59d8-4d70-bf5f-877e427db4d1)
+ ![image](https://github.com/user-attachments/assets/1ce8ceda-f51d-4d8e-af23-f9f4c51f6492)
 
-    
-                    @startuml
+
+                  @startuml
                 left to right direction
-                actor "Ресторанный критик" as fc
-                rectangle "Платежная Система" as ps
-                rectangle наличные as nal
-                rectangle безналичные as nonal
+                actor "Клиент" as fc
                 rectangle автомойка {
                   usecase "UC1: поиск автомойки" as UC1
                   usecase "UC2: Выбор даты и времени" as UC2
                   usecase "UC3: Выбор услуги" as UC3
                   usecase "UC4: Оплата" as UC4
+                  usecase "Платежная система" as US5
                 
                 }
                 
@@ -43,12 +41,10 @@
                 fc --> UC2
                 fc --> UC3
                 fc --> UC4
-                ps <-- UC4
-                ps --> nal
-                ps --> nonal
+                UC4 ..> US5:(include)
+
                 
                 @enduml
-
 ### функциональные требования 
 
 
