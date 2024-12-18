@@ -63,7 +63,8 @@
 
  # 2) usecase
     
- ![image](https://github.com/user-attachments/assets/1ce8ceda-f51d-4d8e-af23-f9f4c51f6492)
+![image](https://github.com/user-attachments/assets/ab5561d0-a6c3-43cf-a425-5154d75e01c8)
+
 <details>
         <summary>usercase code</summary>
 
