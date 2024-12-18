@@ -8,9 +8,6 @@
         3) RPS 75k/24/3600 ~= 1
         
 # 1) user story
-       <!DOCTYPE html>
-<html>
-<head>
 <title>User Stories by Focus</title>
 <style>
   table {
@@ -82,9 +79,6 @@
 
   </tbody>
 </table>
-
-</body>
-</html>
 
 
  # 2) usecase
