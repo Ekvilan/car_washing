@@ -11,55 +11,55 @@
 </head>
 <body>
 
-<h2>User Stories Grouped by Focus</h2>
+<h2>Пользовательские истории по фокусу</h2>
 
 <table>
   <thead>
     <tr>
-      <th>Focus Area</th>
-      <th>User Story</th>
+      <th>Область фокуса</th>
+      <th>Пользовательская история</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Online Booking</td>
-      <td>I want to be able to easily book a car wash online, so that I can choose a time that is convenient for me.</td>
+      <td>Онлайн-бронирование</td>
+      <td>Я, как клиент, хочу иметь возможность легко забронировать мойку онлайн, чтобы я мог выбрать удобное для меня время.</td>
     </tr>
         <tr>
-      <td>Transparency of Prices and Services</td>
-      <td>I want to see a list of available services and their prices on the website and in the app, so that I can choose the most suitable option.</td>
+      <td>Прозрачность цен и услуг</td>
+      <td>Я, как клиент, хочу видеть список доступных услуг и их стоимость на сайте и в приложении, чтобы я мог выбрать наиболее подходящий вариант.</td>
     </tr>
       <tr>
-      <td>Reminders</td>
-      <td>I want to receive notifications about the upcoming time of my booking, so that I am not late.</td>
+      <td>Напоминания</td>
+      <td>Я, как клиент, хочу получать уведомления о приближении времени моего бронирования, чтобы не опоздать.</td>
     </tr>
      <tr>
-      <td>Additional Services</td>
-      <td>I want to be able to choose additional services, such as interior cleaning or body polishing, during the booking process.</td>
+      <td>Дополнительные услуги</td>
+      <td>Я, как клиент, хочу иметь возможность выбрать дополнительные услуги, такие как химчистка салона или полировка кузова, во время бронирования.</td>
     </tr>
       <tr>
-      <td>Quality of Wash</td>
-       <td>I want my car to be washed thoroughly and effectively, so that it looks clean and shiny.</td>
+      <td>Качество мойки</td>
+       <td>Я, как клиент, хочу чтобы мой автомобиль был вымыт качественно и эффективно, чтобы он выглядел чистым и блестящим.</td>
     </tr>
      <tr>
-      <td>Comfort of Waiting</td>
-      <td>I want a comfortable and safe waiting area while my car is being washed.</td>
+      <td>Комфорт ожидания</td>
+      <td>Я, как клиент, хочу удобную и безопасную зону ожидания, пока мой автомобиль моют.</td>
     </tr>
     <tr>
-      <td>Payment Options</td>
-      <td>I want to be able to pay for services in various ways, including cash, cards, and electronic payments.</td>
+      <td>Варианты оплаты</td>
+      <td>Я, как клиент, хочу иметь возможность оплачивать услуги различными способами, включая наличные, карты и электронные платежи.</td>
     </tr>
        <tr>
-      <td>Loyalty Program</td>
-       <td>I want to receive a discount or bonus program for frequent visits to the car wash.</td>
+      <td>Программа лояльности</td>
+       <td>Я, как клиент, хочу получить скидку или бонусную программу за частое посещение автомойки.</td>
     </tr>
     <tr>
-      <td>Feedback</td>
-      <td>I want to be able to leave a review about the quality of the car wash services.</td>
+      <td>Обратная связь</td>
+      <td>Я, как клиент, хочу иметь возможность оставить отзыв о качестве услуг автомойки.</td>
     </tr>
        <tr>
-      <td>Accessibility and Navigation</td>
-       <td>I want to easily find the car wash on the map and get directions.</td>
+      <td>Доступность и навигация</td>
+       <td>Я, как клиент, хочу легко найти автомойку на карте и получить указания по маршруту.</td>
     </tr>
 
   </tbody>
