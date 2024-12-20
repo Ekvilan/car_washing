@@ -334,10 +334,13 @@
 ![393170179-b3ff8dc0-3aa8-432c-b65b-852f5980ed96](https://github.com/user-attachments/assets/07d817a1-dddb-4ab9-8956-a92208123a2b)
 
 ## 5) sequense diagram
-пользователь ищет автомойку
+####Пользователь ищет автомойку
 
 ![image](https://github.com/user-attachments/assets/27d3b633-15a2-4232-b671-ad7fa00a438f)
 
+####Оплата услуг
+
+![image](https://github.com/user-attachments/assets/31210da6-9c0b-45c5-bc85-c1de1bff567e)
 
 
 ## 6) yaml openApi
