@@ -250,58 +250,77 @@
 # 3) ER-диаграмма
 
 ## Сущности и их атрибуты:
-        Клиент (Customer)
-                ID клиента (Customer_ID)
-                Имя (Name)
-                Контактный номер (Phone)
-                Электронная почта (Email)
-                Адрес (Address)
-                Автомобиль (Car)
 
-        ID автомобиля (Car_ID)
-                Марка (Make)
-                Модель (Model)
-                Год выпуска (Year)
-                Номерной знак (License_Plate)
-                Тип (Car_Type) - легковой, внедорожник и т. д.
-                Клиент_ID (Customer_ID) — связь с клиентом
-                Услуга (Service)
-
-        ID услуги (Service_ID)
-                Название (Service_Name) - мойка, полировка, химчистка и т. д.
-                Описание (Description)
-                Цена (Price)
-                Запись на мойку (SingUpForACarWash)
-
-        ID записи (CarWash_ID)
-                Дата записи (Date)
-                Статус записи (Status) - подтверждена, завершена, отменена и т. д.
-                Клиент_ID (Customer_ID) — связь с клиентом
-                Автомобиль_ID (Car_ID) — связь с автомобилем
-                Работник (Employee)
-
-        ID работника (Employee_ID)
-                Имя (Name)
-                Должность (Position)
-                Телефон (Phone)
-                Электронная почта (Email)
-                Мойка (Wash)
+      ' Стиль
+        skinparam classAttributeIconSize 0
+        skinparam class {
+            BackgroundColor White
+            BorderColor Black
+            ArrowColor Black
+        }
         
-        ID мойки (Wash_ID)
-                Тип мойки (Wash_Type) - автоматическая, ручная, экспресс и т. д.
-                Статус мойки (Wash_Status) - в процессе, завершена, отменена
-                Время начала (Start_Time)
-                Время окончания (End_Time)
-                Работник_ID (Employee_ID) — связь с работником
-                Услуга_ID (Service_ID) — связь с услугой
-                Запись_ID (SingUpForACarWash_ID) — связь с записью
-        Связи:
-                Клиент - Автомобиль: Один клиент может иметь несколько автомобилей.(1:M)
-                Автомобиль - Запись на мойку: Один автомобиль может быть связан c несколькими записями на мойку. (1:M)
-                Клиент - Запись на мойку: Один клиент может записать несколько автомобилей на мойку. (1:M)
-                Услуга - Мойка: Одна услуга может быть использована в нескольких мойках. (1:M)
-                Работник - Мойка: Один работник может обслуживать несколько мойок. (1:M)
-                Запись на мойку - Мойка: Каждая запись на мойку связана с конкретной мойкой. (1:1)
+        ' Сущности
+        class Customer {
+            {field} Customer_ID: int
+            {field} Name: string
+            {field} Phone: string
+            {field} Email: string
+            {field} Address: string
+        }
+        
+        class Car {
+            {field} Car_ID: int
+            {field} Make: string
+            {field} Model: string
+            {field} Year: int
+            {field} License_Plate: string
+            {field} Car_Type: string
+            {field} Customer_ID: int
+        }
+        
+        class Service {
+            {field} Service_ID: int
+            {field} Service_Name: string
+            {field} Description: string
+            {field} Price: float
+        }
+        
+        class SingUpForACarWash {
+             {field} CarWash_ID: int
+            {field} Date: date
+            {field} Status: string
+            {field} Customer_ID: int
+             {field} Car_ID: int
+            {field} Employee_ID: int
+        
+        }
+        
+        class Employee {
+            {field} Employee_ID: int
+            {field} Name: string
+            {field} Position: string
+            {field} Phone: string
+             {field} Email: string
+        }
+        
+        class Wash {
+            {field} Wash_ID: int
+            {field} Wash_Type: string
+            {field} Wash_Status: string
+            {field} Start_Time: time
+            {field} End_Time: time
+            {field} Employee_ID: int
+            {field} Service_ID: int
+             {field} SingUpForACarWash_ID: int
+        }
+        
+        ' Связи
+        Customer "1" -- "0..*" Car : has >
+        Car "1" -- "0..*" SingUpForACarWash : has >
+        Customer "1" -- "0..*" SingUpForACarWash : has >
+        Service "1" -- "0..*" Wash : has >
+        Employee "1" -- "0..*" Wash : has >
+        SingUpForACarWash "1" -- "1" Wash : has >
 
 
 ## ER-диаграмма
