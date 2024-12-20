@@ -142,7 +142,7 @@
         После подтверждения система переходит к экрану выбора даты и времени (UI_03).
         Сценарий завершен.
    
-4) usecase: UC3: Выбор даты и времени
+3) usecase: UC3: Выбор даты и времени
 
         Участники: Пользователь приложения
         Предварительные условия: пользователь выбрал автомойку и перешел на экран выбора даты и времени (UI_03).
@@ -171,7 +171,7 @@
         Система переходит к экрану оплаты (UI_05).
         Сценарий завершен.
    
-6) usecase: UC5: Просмотр доступных услуг
+5) usecase: UC5: Просмотр доступных услуг
 
         Участники: Пользователь приложения
         Предусловия: Пользователь находится на экране выбора услуги (UI_04).
@@ -202,7 +202,7 @@
         ТО: Система предлагает повторить оплату.
         Сценарий завершен.
    
-8) usecase: UC7: Просмотр истории заказов
+7) usecase: UC7: Просмотр истории заказов
 
         Участники: Пользователь приложения
         Предусловия: Пользователь авторизован.
@@ -233,7 +233,7 @@
         Система переходит к предыдущему экрану.
         Сценарий завершен.
    
-10) usecase: UC9: Поддержка клиентов
+9) usecase: UC9: Поддержка клиентов
 
         Участники: Пользователь приложения
         Предусловия: Пользователь авторизован.
@@ -318,8 +318,6 @@
 
 ![Untitled](https://github.com/user-attachments/assets/2e825ba8-1ad4-458e-bf59-f8e072c67ac4)
 
-
-  
         @startuml
         sequenceDiagram
             participant Пользователь
@@ -383,7 +381,7 @@
 
 ## 6) yaml openApi
 
-                openapi: 3.0.0
+openapi: 3.0.0
 info:
   title: Car Wash Management API
   version: 1.0.0
@@ -418,7 +416,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-    post:
+post:
       summary: Create a new customer.
       security:
         - ApiKeyAuth: []
@@ -527,7 +525,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-    post:
+ post:
       summary: Create a new car.
       security:
         - ApiKeyAuth: []
@@ -636,7 +634,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-    post:
+ post:
       summary: Create a new service.
       security:
         - ApiKeyAuth: []
@@ -745,7 +743,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-    post:
+post:
       summary: Create a new employee.
       security:
         - ApiKeyAuth: []
@@ -961,7 +959,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-    post:
+ post:
       summary: Create a new wash.
       security:
         - ApiKeyAuth: []
@@ -1073,7 +1071,7 @@ components:
         address:
           type: string
 
-    Car:
+Car:
       type: object
       properties:
         carId:
@@ -1093,7 +1091,7 @@ components:
         customerId:
           type: integer
 
-    Service:
+ Service:
       type: object
       properties:
         serviceId:
@@ -1107,7 +1105,7 @@ components:
           type: number
           format: float
 
-    Employee:
+Employee:
       type: object
       properties:
         employeeId:
@@ -1124,7 +1122,7 @@ components:
           type: string
           format: email
 
-    BookingRequest:
+BookingRequest:
       type: object
       properties:
         customerId:
@@ -1140,7 +1138,7 @@ components:
           type: string
           format: time
 
-    BookingUpdateRequest:
+BookingUpdateRequest:
       type: object
       properties:
         date:
@@ -1153,7 +1151,7 @@ components:
           type: string
           enum: [confirmed, completed, cancelled]
 
-    Booking:
+Booking:
       type: object
       properties:
         bookingId:
@@ -1180,7 +1178,7 @@ components:
           type: number
           format: float
 
-    PaymentRequest:
+PaymentRequest:
       type: object
       properties:
         paymentMethod:
@@ -1199,7 +1197,7 @@ components:
           type: number
           format: float
 
-    Wash:
+   Wash:
       type: object
       properties:
         washId:
@@ -1224,7 +1222,7 @@ components:
         bookingId:
           type: integer
 
-    Error:
+Error:
       type: object
       properties:
         message:
@@ -1237,7 +1235,7 @@ components:
             type: string
 
 
-  responses:
+ responses:
     BadRequest:
       description: Bad Request.  The request is invalid or contains errors.
       content:
