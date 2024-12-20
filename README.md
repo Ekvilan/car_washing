@@ -328,10 +328,10 @@
 
 # 4) C4 model
 ## c1 system context
-![image](https://github.com/user-attachments/assets/ddc5fd93-34eb-441e-bb61-b45bad8ef3e3)
+![393165618-cc2e2f8b-06e3-4b8f-9303-5be7e35c8dd2](https://github.com/user-attachments/assets/a9862816-3ec1-428c-82ec-429451909ea2)
 
 ## c2 conteners
-![image](https://github.com/user-attachments/assets/50fbd17c-8610-47c4-8c12-4511e040bb24)
+![393170179-b3ff8dc0-3aa8-432c-b65b-852f5980ed96](https://github.com/user-attachments/assets/07d817a1-dddb-4ab9-8956-a92208123a2b)
 
 ## 5) sequense diagram
 
