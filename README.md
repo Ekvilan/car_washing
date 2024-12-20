@@ -346,4 +346,4 @@
 
 ## 6) yaml openApi
 
-Открыть swagger editor и ввести этот код
+Открыть swagger editor и ввести [этот код](https://github.com/Ekvilan/car_washing/blob/main/file.yaml)
