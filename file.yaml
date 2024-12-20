@@ -1,0 +1,1202 @@
+openapi: 3.0.3
+info:
+  title: Спецификация OpenAPI для приложения автомойки
+  version: 1.0.0
+  
+tags:
+  - name: User
+    description: Управление пользователями
+  - name: Car
+    description: Управление автомобилями
+  - name: Service
+    description: Управление услугами
+  - name: Booking
+    description: Работа с записями
+  - name: Payment
+    description: Управление платежами
+  - name: Review
+    description: Работа с отзывами
+  - name: Support
+    description: Запросы в техническую поддержку
+
+    
+paths:
+  /user:
+    post:
+      tags:
+        - User
+      summary: Создать пользователя
+      description: Создание нового пользователя
+      operationId: createUser
+      requestBody:
+        description: Объект нового пользователя
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Пользователь создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Такой пользователь уже существует
+
+  /users:
+    get:
+      tags:
+        - User
+      summary: Получить список пользователей
+      description: Выводит список пользователей
+      operationId: getUsers
+      responses:
+        '200':
+          description: Операция прошла успешно
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/UsersList'
+
+  /user/{UserId}:
+    get:
+      tags:
+        - User
+      summary: Получить пользователя
+      description: Получить пользователя по id
+      operationId: getUserById
+      parameters:
+        - name: UserId
+          in: path
+          description: id пользователя
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Пользователь найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Неправильный формат id
+        '404':
+          description: Пользователь с таким id не найден
+
+    put:
+      tags:
+        - User
+      summary: Изменить пользователя
+      description: Изменение данных пользователя
+      operationId: updateUserById
+      parameters:
+        - name: UserId
+          in: path
+          description: id пользователя
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Объект обновленного пользователя
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Операция прошла успешно
+        '400':
+          description: Неверный формат id
+        '404':
+          description: Пользователь не найден
+
+    delete:
+      tags:
+        - User
+      summary: Удалить пользователя
+      description: Удаляет пользователя из системы по его id.
+      operationId: deleteUserbyId
+      parameters:
+        - name: UserId
+          in: path
+          description: id пользователя
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Пользователь удален
+        '400':
+          description: Неправильный формат ввода id
+        '404':
+          description: Пользователь не найден
+
+  /car:
+    post:
+      tags:
+        - Car
+      summary: Создать автомобиль
+      description: Создание нового автомобиля для пользователя
+      operationId: createCar
+      requestBody:
+        description: Объект нового автомобиля
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Car'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        '200':
+          description: Автомобиль создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '400':
+          description: Некорректные данные автомобиля
+
+  /cars:
+    get:
+      tags:
+        - Car
+      summary: Получить список автомобилей
+      description: Выводит список всех автомобилей пользователя
+      operationId: getCars
+      responses:
+        '200':
+          description: Операция прошла успешно
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarsList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CarsList'
+
+  /car/{CarId}:
+    get:
+      tags:
+        - Car
+      summary: Получить автомобиль
+      description: Получить автомобиль по id
+      operationId: getCarById
+      parameters:
+        - name: CarId
+          in: path
+          description: id автомобиля
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Автомобиль найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '400':
+          description: Неправильный формат id
+        '404':
+          description: Автомобиль с таким id не найден
+
+    put:
+      tags:
+        - Car
+      summary: Изменить автомобиль
+      description: Изменение данных автомобиля
+      operationId: updateCarById
+      parameters:
+        - name: CarId
+          in: path
+          description: id автомобиля
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Объект обновленного автомобиля
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Car'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        '200':
+          description: Операция прошла успешно
+        '400':
+          description: Неверный формат id
+        '404':
+          description: Автомобиль не найден
+
+    delete:
+      tags:
+        - Car
+      summary: Удалить автомобиль
+      description: Удаляет автомобиль из системы по его id.
+      operationId: deleteCarById
+      parameters:
+        - name: CarId
+          in: path
+          description: id автомобиля
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Автомобиль удален
+        '400':
+          description: Неправильный формат ввода id
+        '404':
+          description: Автомобиль не найден
+  
+
+  /service:
+    post:
+      tags:
+        - Service
+      summary: Создать услугу
+      description: Добавление новой услуги в систему
+      operationId: createService
+      requestBody:
+        description: Объект новой услуги
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Service'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Service'
+      responses:
+        '200':
+          description: Услуга создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '400':
+          description: Некорректные данные услуги
+
+  /services:
+    get:
+      tags:
+        - Service
+      summary: Получить список услуг
+      description: Выводит список всех доступных услуг
+      operationId: getServices
+      responses:
+        '200':
+          description: Операция прошла успешно
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServicesList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ServicesList'
+
+  /service/{ServiceId}:
+    get:
+      tags:
+        - Service
+      summary: Получить услугу
+      description: Получить услугу по id
+      operationId: getServiceById
+      parameters:
+        - name: ServiceId
+          in: path
+          description: id услуги
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Услуга найдена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '400':
+          description: Неправильный формат id
+        '404':
+          description: Услуга с таким id не найдена
+
+    put:
+      tags:
+        - Service
+      summary: Изменить услугу
+      description: Обновление информации об услуге
+      operationId: updateServiceById
+      parameters:
+        - name: ServiceId
+          in: path
+          description: id услуги
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Объект обновленной услуги
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Service'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Service'
+      responses:
+        '200':
+          description: Операция прошла успешно
+        '400':
+          description: Неверный формат id
+        '404':
+          description: Услуга не найдена
+
+    delete:
+      tags:
+        - Service
+      summary: Удалить услугу
+      description: Удаляет услугу из системы по ее id.
+      operationId: deleteServiceById
+      parameters:
+        - name: ServiceId
+          in: path
+          description: id услуги
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Услуга удалена
+        '400':
+          description: Неправильный формат ввода id
+        '404':
+          description: Услуга не найдена
+          
+  /booking:
+    post:
+      tags:
+        - Booking
+      summary: Создать запись
+      description: Добавление новой записи на услугу для пользователя
+      operationId: createBooking
+      requestBody:
+        description: Объект новой записи
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Booking'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Booking'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Booking'
+      responses:
+        '200':
+          description: Запись создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Booking'
+        '400':
+          description: Некорректные данные записи
+
+  /bookings:
+    get:
+      tags:
+        - Booking
+      summary: Получить список записей
+      description: Выводит список всех записей пользователей на услуги
+      operationId: getBookings
+      responses:
+        '200':
+          description: Операция прошла успешно
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingsList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BookingsList'
+
+  /booking/{BookingId}:
+    get:
+      tags:
+        - Booking
+      summary: Получить запись
+      description: Получить запись по id
+      operationId: getBookingById
+      parameters:
+        - name: BookingId
+          in: path
+          description: id записи
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Запись найдена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Booking'
+        '400':
+          description: Неправильный формат id
+        '404':
+          description: Запись с таким id не найдена
+
+    put:
+      tags:
+        - Booking
+      summary: Изменить запись
+      description: Обновление информации о записи
+      operationId: updateBookingById
+      parameters:
+        - name: BookingId
+          in: path
+          description: id записи
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Объект обновленной записи
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Booking'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Booking'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Booking'
+      responses:
+        '200':
+          description: Операция прошла успешно
+        '400':
+          description: Неверный формат id
+        '404':
+          description: Запись не найдена
+
+    delete:
+      tags:
+        - Booking
+      summary: Удалить запись
+      description: Удаляет запись из системы по ее id.
+      operationId: deleteBookingById
+      parameters:
+        - name: BookingId
+          in: path
+          description: id записи
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Запись удалена
+        '400':
+          description: Неправильный формат ввода id
+        '404':
+          description: Запись не найдена
+          
+  /payment:
+    post:
+      tags:
+        - Payment
+      summary: Создать платеж
+      description: Создание нового платежа для записи
+      operationId: createPayment
+      requestBody:
+        description: Объект нового платежа
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Payment'
+      responses:
+        '200':
+          description: Платеж создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Некорректные данные платежа
+
+  /payments:
+    get:
+      tags:
+        - Payment
+      summary: Получить список платежей
+      description: Выводит список всех платежей по записям
+      operationId: getPayments
+      responses:
+        '200':
+          description: Операция прошла успешно
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentsList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PaymentsList'
+
+  /payment/{PaymentId}:
+    get:
+      tags:
+        - Payment
+      summary: Получить платеж
+      description: Получить платеж по id
+      operationId: getPaymentById
+      parameters:
+        - name: PaymentId
+          in: path
+          description: id платежа
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Платеж найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Неправильный формат id
+        '404':
+          description: Платеж с таким id не найден
+
+    put:
+      tags:
+        - Payment
+      summary: Изменить платеж
+      description: Обновление данных платежа
+      operationId: updatePaymentById
+      parameters:
+        - name: PaymentId
+          in: path
+          description: id платежа
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Объект обновленного платежа
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Payment'
+      responses:
+        '200':
+          description: Операция прошла успешно
+        '400':
+          description: Неверный формат id
+        '404':
+          description: Платеж не найден
+
+    delete:
+      tags:
+        - Payment
+      summary: Удалить платеж
+      description: Удаляет платеж по его id.
+      operationId: deletePaymentById
+      parameters:
+        - name: PaymentId
+          in: path
+          description: id платежа
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Платеж удален
+        '400':
+          description: Неправильный формат ввода id
+        '404':
+          description: Платеж не найден
+        
+  /review:
+    post:
+      tags:
+        - Review
+      summary: Создать отзыв
+      description: Создание нового отзыва для записи
+      operationId: createReview
+      requestBody:
+        description: Объект нового отзыва
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Review'
+      responses:
+        '200':
+          description: Отзыв создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '400':
+          description: Некорректные данные отзыва
+
+  /reviews:
+    get:
+      tags:
+        - Review
+      summary: Получить список отзывов
+      description: Выводит список всех отзывов
+      operationId: getReviews
+      responses:
+        '200':
+          description: Операция прошла успешно
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewsList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ReviewsList'
+
+  /review/{ReviewId}:
+    get:
+      tags:
+        - Review
+      summary: Получить отзыв
+      description: Получить отзыв по id
+      operationId: getReviewById
+      parameters:
+        - name: ReviewId
+          in: path
+          description: id отзыва
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Отзыв найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '400':
+          description: Неправильный формат id
+        '404':
+          description: Отзыв с таким id не найден
+
+    put:
+      tags:
+        - Review
+      summary: Изменить отзыв
+      description: Обновление данных отзыва
+      operationId: updateReviewById
+      parameters:
+        - name: ReviewId
+          in: path
+          description: id отзыва
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Объект обновленного отзыва
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Review'
+      responses:
+        '200':
+          description: Операция прошла успешно
+        '400':
+          description: Неверный формат id
+        '404':
+          description: Отзыв не найден
+
+    delete:
+      tags:
+        - Review
+      summary: Удалить отзыв
+      description: Удаляет отзыв по его id.
+      operationId: deleteReviewById
+      parameters:
+        - name: ReviewId
+          in: path
+          description: id отзыва
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Отзыв удален
+        '400':
+          description: Неправильный формат ввода id
+        '404':
+          description: Отзыв не найден
+
+  /support:
+    post:
+      tags:
+        - Support
+      summary: Создать запрос в техническую поддержку
+      description: Создание нового запроса в техническую поддержку
+      operationId: createSupportRequest
+      requestBody:
+        description: Объект нового запроса в техподдержку
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Support'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Support'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Support'
+      responses:
+        '200':
+          description: Запрос в техническую поддержку создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Support'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Support'
+        '400':
+          description: Некорректные данные запроса
+
+  /supports:
+    get:
+      tags:
+        - Support
+      summary: Получить список запросов в техническую поддержку
+      description: Получает список всех запросов в техническую поддержку
+      operationId: getSupportRequests
+      responses:
+        '200':
+          description: Операция прошла успешно
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportsList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SupportsList'
+
+  /support/{SupportId}:
+    get:
+      tags:
+        - Support
+      summary: Получить запрос в техническую поддержку
+      description: Получить запрос по ID
+      operationId: getSupportRequestById
+      parameters:
+        - name: SupportId
+          in: path
+          description: id запроса
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Запрос найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Support'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Support'
+        '400':
+          description: Неправильный формат id
+        '404':
+          description: Запрос с таким id не найден
+
+    put:
+      tags:
+        - Support
+      summary: Изменить запрос в техническую поддержку
+      description: Обновление данных запроса в техподдержку
+      operationId: updateSupportRequestById
+      parameters:
+        - name: SupportId
+          in: path
+          description: id запроса
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Объект обновленного запроса
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Support'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Support'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Support'
+      responses:
+        '200':
+          description: Операция прошла успешно
+        '400':
+          description: Неверный формат id
+        '404':
+          description: Запрос не найден
+
+    delete:
+      tags:
+        - Support
+      summary: Удалить запрос в техническую поддержку
+      description: Удаляет запрос по его id.
+      operationId: deleteSupportRequestById
+      parameters:
+        - name: SupportId
+          in: path
+          description: id запроса
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Запрос удален
+        '400':
+          description: Неправильный формат ввода id
+        '404':
+          description: Запрос не найден
+
+          
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: string
+        email:
+          type: string
+          example: string@mail.com
+        phone:
+          type: string
+          example: 'number'
+        password:
+          type: string
+          example: 'password'
+
+    UsersList:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+      xml:
+        name: userslist
+
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 1
+        make:
+          type: string
+          example: 'string'
+        model:
+          type: string
+          example: 'string'
+        year:
+          type: string
+          format: date
+          example: 'data'
+        license_plate:
+          type: string
+          example: 'string'
+        color:
+          type: string
+          example: 'color'
+
+    CarsList:
+      type: object
+      properties:
+        cars:
+          type: array
+          items:
+            $ref: '#/components/schemas/Car'
+      xml:
+        name: carslist
+
+    Service:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'string'
+        description:
+          type: string
+          example: 'string'
+        price:
+          type: number
+          format: decimal
+          example: float
+
+    ServicesList:
+      type: object
+      properties:
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+      xml:
+        name: serviceslist
+
+    Booking:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 1
+        car_id:
+          type: integer
+          example: 1
+        service_id:
+          type: integer
+          example: 1
+        status:
+          type: boolean
+          example: true
+        date:
+          type: string
+          format: date-time
+          example: 'date-time'
+        payment_status:
+          type: boolean
+          example: true
+
+    BookingsList:
+      type: object
+      properties:
+        bookings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Booking'
+      xml:
+        name: bookingslist
+
+    Payment:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        booking_id:
+          type: integer
+          example: 1
+        amount:
+          type: number
+          format: decimal
+          example: double
+        payment_date:
+          type: string
+          format: date-time
+          example: 'date-time'
+        payment_method:
+          type: string
+          example: 'string'
+
+    PaymentsList:
+      type: object
+      properties:
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+      xml:
+        name: paymentslist
+
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 1
+        booking_id:
+          type: integer
+          example: 1
+        rating:
+          type: integer
+          example: 5
+        comment:
+          type: string
+          example: 'string'
+
+    ReviewsList:
+      type: object
+      properties:
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
+      xml:
+        name: reviewslist
+
+    Support:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 1
+        subject:
+          type: string
+          example: 'string'
+        description:
+          type: string
+          example: 'string'
+        status:
+          type: boolean
+          example: false
+        creation_date:
+          type: string
+          format: date-time
+          example: 'date-time'
+        response:
+          type: string
+          example: 'string'
+
+    SupportsList:
+      type: object
+      properties:
+        supports:
+          type: array
+          items:
+            $ref: '#/components/schemas/Support'
+      xml:
+        name: supportslist
