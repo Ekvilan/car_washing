@@ -305,7 +305,7 @@
 
 
 ## ER-диаграмма
-![image](https://github.com/user-attachments/assets/20fa00b7-1acd-4737-970c-6ad85e3746bf)
+![image](https://github.com/user-attachments/assets/39d86b11-ac5a-420a-8c0b-29d6dbd3f5d3)
 
 # 4) C4 model
 ## c1 system context
